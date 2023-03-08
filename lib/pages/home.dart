@@ -10,10 +10,18 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage>
+    with SingleTickerProviderStateMixin {
   List<String> line = ["L01", "L02", "L03", "L04"];
   String selectedValue = "L01";
   num test = 3.9;
+  TabController? _tabBarController;
+  @override
+  void initState() {
+    super.initState();
+    _tabBarController = TabController(length: 2, vsync: this);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,52 +70,51 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Container(
         child: Container(
           decoration: const BoxDecoration(color: Colors.white),
-          child: DefaultTabController(
-            length: 2,
-            child: Column(
-              children: [
-                const TabBar(
-                  labelColor: Colors.blue,
-                  unselectedLabelColor: Colors.black,
-                  tabs: [
-                    Tab(
-                      text: '當天工單',
-                    ),
-                    Tab(
-                      text: '統計圖表',
-                    )
-                  ],
-                ),
-                Expanded(
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        border: const Border(
-                            top: BorderSide(color: Colors.grey, width: 0.5))),
-                    child: TabBarView(
-                      children: [
-                        Center(
-                          child: TextButton(
-                            onPressed: () {
-                              print("MediaQuery height:");
-                              print(MediaQuery.of(context).size.height);
-                              print("appbar height:");
-                              print(AppBar().preferredSize.height);
-                              print("padding height:");
-                              print(MediaQuery.of(context).padding.top);
-                              print("Viewpadding height:");
-                              print(MediaQuery.of(context).padding.bottom);
-                            },
-                            child: const Text("aaa"),
-                          ),
+          child: Column(
+            children: [
+              TabBar(
+                controller: _tabBarController,
+                labelColor: Colors.blue,
+                unselectedLabelColor: Colors.black,
+                tabs: [
+                  Tab(
+                    text: '當天工單',
+                  ),
+                  Tab(
+                    text: '統計圖表',
+                  )
+                ],
+              ),
+              Expanded(
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      border: const Border(
+                          top: BorderSide(color: Colors.grey, width: 0.5))),
+                  child: TabBarView(
+                    controller: _tabBarController,
+                    children: [
+                      Center(
+                        child: TextButton(
+                          onPressed: () {
+                            print("MediaQuery height:");
+                            print(MediaQuery.of(context).size.height);
+                            print("appbar height:");
+                            print(AppBar().preferredSize.height);
+                            print("padding height:");
+                            print(MediaQuery.of(context).padding.top);
+                            print("Viewpadding height:");
+                            print(MediaQuery.of(context).padding.bottom);
+                          },
+                          child: const Text("aaa"),
                         ),
-                        const Charts(),
-                      ],
-                    ),
+                      ),
+                      const Charts(),
+                    ],
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

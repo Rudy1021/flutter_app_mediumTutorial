@@ -11,7 +11,8 @@ class _StatisticsState extends State<Statistics> {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      shrinkWrap: true,
+      physics: const ClampingScrollPhysics(),
+      // shrinkWrap: true,
       padding: const EdgeInsets.all(20),
       children: [
         const Statisticard(
