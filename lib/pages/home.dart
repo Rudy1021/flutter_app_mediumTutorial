@@ -68,54 +68,43 @@ class _MyHomePageState extends State<MyHomePage>
         ),
       ),
       body: Container(
-        child: Container(
-          decoration: const BoxDecoration(color: Colors.white),
-          child: Column(
-            children: [
-              TabBar(
-                controller: _tabBarController,
-                labelColor: Colors.blue,
-                unselectedLabelColor: Colors.black,
-                tabs: [
-                  Tab(
-                    text: '當天工單',
-                  ),
-                  Tab(
-                    text: '統計圖表',
-                  )
-                ],
-              ),
-              Expanded(
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: Colors.grey[200],
-                      border: const Border(
-                          top: BorderSide(color: Colors.grey, width: 0.5))),
-                  child: TabBarView(
-                    controller: _tabBarController,
-                    children: [
-                      Center(
-                        child: TextButton(
-                          onPressed: () {
-                            print("MediaQuery height:");
-                            print(MediaQuery.of(context).size.height);
-                            print("appbar height:");
-                            print(AppBar().preferredSize.height);
-                            print("padding height:");
-                            print(MediaQuery.of(context).padding.top);
-                            print("Viewpadding height:");
-                            print(MediaQuery.of(context).padding.bottom);
-                          },
-                          child: const Text("aaa"),
-                        ),
+        decoration: const BoxDecoration(color: Colors.white),
+        child: Column(
+          children: [
+            TabBar(
+              controller: _tabBarController,
+              labelColor: Colors.blue,
+              unselectedLabelColor: Colors.black,
+              tabs: const [
+                Tab(
+                  text: '當天工單',
+                ),
+                Tab(
+                  text: '統計圖表',
+                )
+              ],
+            ),
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                    color: Colors.grey[200],
+                    border: const Border(
+                        top: BorderSide(color: Colors.grey, width: 0.5))),
+                child: TabBarView(
+                  controller: _tabBarController,
+                  children: [
+                    Center(
+                      child: TextButton(
+                        onPressed: () {},
+                        child: const Text("aaa"),
                       ),
-                      const Charts(),
-                    ],
-                  ),
+                    ),
+                    const Charts(),
+                  ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
