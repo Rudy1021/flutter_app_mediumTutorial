@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_testpage/components/statistics.dart';
+import 'package:flutter_app_testpage/components/allday.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:extended_sliver/extended_sliver.dart';
 
-class Charts extends StatefulWidget {
-  const Charts({Key? key}) : super(key: key);
+import '../../components/productstatistic.dart';
+
+class WlChartsPage extends StatefulWidget {
+  const WlChartsPage({Key? key}) : super(key: key);
 
   @override
-  State<Charts> createState() => _ChartsState();
+  State<WlChartsPage> createState() => _WlChartsPageState();
 }
 
-class _ChartsState extends State<Charts> with TickerProviderStateMixin {
+class _WlChartsPageState extends State<WlChartsPage>
+    with TickerProviderStateMixin {
   TabController? _tabController;
   ScrollController? _scrollController;
 
@@ -164,17 +167,7 @@ class _ChartsState extends State<Charts> with TickerProviderStateMixin {
             border: Border(top: BorderSide(color: Colors.grey, width: 0.5))),
         child: TabBarView(
           controller: _tabController,
-          children: [
-            const Statistics(),
-            Container(
-              color: Colors.red,
-              child: const Center(
-                child: Text('Display Tab 2',
-                    style:
-                        TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
-              ),
-            ),
-          ],
+          children: [ProductStatisticPage(), AllDayPage()],
         ),
       ),
     );

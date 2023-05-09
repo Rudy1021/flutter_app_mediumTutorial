@@ -1,21 +1,20 @@
 import 'package:flutter/material.dart';
 
-class Statistics extends StatefulWidget {
-  const Statistics({Key? key}) : super(key: key);
+class ProductStatisticPage extends StatefulWidget {
+  const ProductStatisticPage({Key? key}) : super(key: key);
 
   @override
-  State<Statistics> createState() => _StatisticsState();
+  State<ProductStatisticPage> createState() => _ProductStatisticPageState();
 }
 
-class _StatisticsState extends State<Statistics> {
+class _ProductStatisticPageState extends State<ProductStatisticPage> {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      physics: const ClampingScrollPhysics(),
-      // shrinkWrap: true,
+      physics: const BouncingScrollPhysics(),
       padding: const EdgeInsets.all(20),
       children: [
-        const Statisticard(
+        const StatisticCard(
           widgetColor: Colors.blue,
           firstText: "稼動時間",
           secText: "應稼動時間",
@@ -23,7 +22,7 @@ class _StatisticsState extends State<Statistics> {
           secNum: "255",
           iconName: Icons.add_chart,
         ),
-        const Statisticard(
+        const StatisticCard(
           widgetColor: Colors.greenAccent,
           firstText: "生產工時",
           secText: "入庫工時",
@@ -31,7 +30,7 @@ class _StatisticsState extends State<Statistics> {
           secNum: "111.8h",
           iconName: Icons.ssid_chart,
         ),
-        Statisticard(
+        StatisticCard(
           widgetColor: Colors.yellowAccent[700]!,
           firstText: "產出總數",
           secText: "不良總數",
@@ -39,7 +38,7 @@ class _StatisticsState extends State<Statistics> {
           secNum: "0",
           iconName: Icons.electric_bolt,
         ),
-        const Statisticard(
+        const StatisticCard(
           widgetColor: Colors.redAccent,
           firstText: "異常累計",
           secText: "停產次數/停產工時",
@@ -52,8 +51,8 @@ class _StatisticsState extends State<Statistics> {
   }
 }
 
-class Statisticard extends StatelessWidget {
-  const Statisticard(
+class StatisticCard extends StatelessWidget {
+  const StatisticCard(
       {super.key,
       this.widgetColor = Colors.blue,
       this.iconName = Icons.bar_chart,
