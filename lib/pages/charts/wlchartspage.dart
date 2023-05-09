@@ -167,7 +167,7 @@ class _WlChartsPageState extends State<WlChartsPage>
             border: Border(top: BorderSide(color: Colors.grey, width: 0.5))),
         child: TabBarView(
           controller: _tabController,
-          children: [ProductStatisticPage(), AllDayPage()],
+          children: [ProductStatisticPage(), WlAllDayPage()],
         ),
       ),
     );

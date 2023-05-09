@@ -4,14 +4,14 @@ import 'package:fl_chart/fl_chart.dart';
 
 import 'package:badges/badges.dart' as badges;
 
-class AllDayPage extends StatefulWidget {
-  const AllDayPage({Key? key}) : super(key: key);
+class WlAllDayPage extends StatefulWidget {
+  const WlAllDayPage({Key? key}) : super(key: key);
 
   @override
-  State<AllDayPage> createState() => _AllDayPageState();
+  State<WlAllDayPage> createState() => _WlAllDayPageState();
 }
 
-class _AllDayPageState extends State<AllDayPage> {
+class _WlAllDayPageState extends State<WlAllDayPage> {
   Widget bottomTitleWidgets(double value, TitleMeta meta) {
     const style = TextStyle(
       fontSize: 10,
