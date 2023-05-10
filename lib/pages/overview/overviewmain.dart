@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_testpage/pages/overview/allday/allday.dart';
 import 'package:flutter_app_testpage/pages/overview/ruler/ruler.dart';
 
+import 'package:dropdown_button2/dropdown_button2.dart';
+
 class Overviewmain extends StatefulWidget {
   const Overviewmain({Key? key}) : super(key: key);
 
@@ -11,6 +13,8 @@ class Overviewmain extends StatefulWidget {
 
 class _OverviewmainState extends State<Overviewmain> {
   List<String> tabTitle = ["稼動尺", "全天趨勢"];
+  List<String> category = ["全部", "L02", "L03", "L04"];
+  String selectedCategory = "全部";
 
   @override
   Widget build(BuildContext context) {
@@ -18,11 +22,103 @@ class _OverviewmainState extends State<Overviewmain> {
       length: tabTitle.length,
       child: Scaffold(
           appBar: AppBar(
-            title: const Text('稼動總覽'),
+            elevation: 0,
+            title: Container(
+              padding: const EdgeInsets.all(5),
+              child: const Text("稼動總覽"),
+            ),
             centerTitle: true,
           ),
           body: Column(
             children: [
+              Container(
+                padding: const EdgeInsets.only(bottom: 8),
+                width: double.infinity,
+                color: Colors.blue,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    DropdownButtonHideUnderline(
+                      child: DropdownButton2(
+                        selectedItemBuilder: (_) {
+                          return category
+                              .map((e) => Container(
+                                    alignment: Alignment.center,
+                                    child: Text(
+                                      e,
+                                      style:
+                                          const TextStyle(color: Colors.white),
+                                    ),
+                                  ))
+                              .toList();
+                        },
+                        isDense: true,
+                        items: category
+                            .map((item) => DropdownMenuItem<String>(
+                                  value: item,
+                                  child: Text(
+                                    item,
+                                    style: const TextStyle(
+                                      fontSize: 18,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ))
+                            .toList(),
+                        value: selectedCategory,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedCategory = value as String;
+                          });
+                        },
+                        iconStyleData: const IconStyleData(iconSize: 30),
+                        menuItemStyleData: MenuItemStyleData(
+                            overlayColor:
+                                MaterialStateProperty.all(Colors.black)),
+                      ),
+                    ),
+                    DropdownButtonHideUnderline(
+                      child: DropdownButton2(
+                        selectedItemBuilder: (_) {
+                          return category
+                              .map((e) => Container(
+                                    alignment: Alignment.center,
+                                    child: Text(
+                                      e,
+                                      style:
+                                          const TextStyle(color: Colors.white),
+                                    ),
+                                  ))
+                              .toList();
+                        },
+                        isDense: true,
+                        items: category
+                            .map((item) => DropdownMenuItem<String>(
+                                  value: item,
+                                  child: Text(
+                                    item,
+                                    style: const TextStyle(
+                                      fontSize: 18,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ))
+                            .toList(),
+                        value: selectedCategory,
+                        onChanged: (value) {
+                          setState(() {
+                            selectedCategory = value as String;
+                          });
+                        },
+                        iconStyleData: const IconStyleData(iconSize: 30),
+                        menuItemStyleData: MenuItemStyleData(
+                            overlayColor:
+                                MaterialStateProperty.all(Colors.black)),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               const TabBar(
                 labelColor: Colors.blue,
                 unselectedLabelColor: Colors.black,

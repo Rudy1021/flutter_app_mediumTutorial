@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_testpage/pages/wlstatus/wlstatus.dart';
 import 'package:flutter_app_testpage/pages/overview/overviewmain.dart';
 
+import '../effectiveness/effectiveness.dart';
+
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -64,7 +66,12 @@ class _HomePageState extends State<HomePage> {
                     backgroundColor: Colors.amber,
                     foregroundColor: Colors.white,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const EffectivenessPage()));
+                  },
                   child: const Text("綜合效能"),
                 ),
               ),

@@ -30,45 +30,62 @@ class _WlStatusPageState extends State<WlStatusPage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          centerTitle: true,
-          elevation: 0,
-          backgroundColor: Colors.blue,
-          title: Column(
-            children: [
-              Container(
-                padding: const EdgeInsets.all(5),
-                child: const Text("各線狀況"),
-              ),
-              DropdownButton2(
-                isDense: true,
-                items: line
-                    .map((item) => DropdownMenuItem<String>(
-                          value: item,
-                          child: Text(
-                            item,
-                            style: const TextStyle(
-                              fontSize: 18,
-                              color: Colors.black,
-                            ),
-                          ),
-                        ))
-                    .toList(),
-                value: selectedValue,
-                onChanged: (value) {
-                  setState(() {
-                    selectedValue = value as String;
-                  });
-                },
-                iconStyleData: const IconStyleData(iconSize: 30),
-                menuItemStyleData: MenuItemStyleData(
-                    overlayColor: MaterialStateProperty.all(Colors.black)),
-              ),
-            ],
-          )),
+        centerTitle: true,
+        elevation: 0,
+        backgroundColor: Colors.blue,
+        title: Container(
+          padding: const EdgeInsets.all(5),
+          child: const Text("各線狀況"),
+        ),
+      ),
       body: Container(
         decoration: const BoxDecoration(color: Colors.white),
         child: Column(
           children: [
+            Container(
+              padding: const EdgeInsets.only(bottom: 8),
+              width: double.infinity,
+              color: Colors.blue,
+              child: Center(
+                child: DropdownButtonHideUnderline(
+                  child: DropdownButton2(
+                    selectedItemBuilder: (_) {
+                      return line
+                          .map((e) => Container(
+                                alignment: Alignment.center,
+                                child: Text(
+                                  e,
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                              ))
+                          .toList();
+                    },
+                    isDense: true,
+                    items: line
+                        .map((item) => DropdownMenuItem<String>(
+                              value: item,
+                              child: Text(
+                                item,
+                                style: const TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ))
+                        .toList(),
+                    value: selectedValue,
+                    onChanged: (value) {
+                      setState(() {
+                        selectedValue = value as String;
+                      });
+                    },
+                    iconStyleData: const IconStyleData(iconSize: 30),
+                    menuItemStyleData: MenuItemStyleData(
+                        overlayColor: MaterialStateProperty.all(Colors.blue)),
+                  ),
+                ),
+              ),
+            ),
             TabBar(
               controller: _tabBarController,
               labelColor: Colors.blue,
