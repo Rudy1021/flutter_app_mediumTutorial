@@ -67,19 +67,19 @@ class _RulerPageState extends State<RulerPage> {
                               children: [
                                 Container(
                                   color: Colors.green,
-                                  width: containerWidth * (5 / 12), // 43200
+                                  width: containerWidth * (5 / 24), // 43200
                                 ),
                                 Container(
                                   color: Colors.red,
-                                  width: containerWidth * (1 / 12),
+                                  width: containerWidth * (1 / 24),
                                 ),
                                 Container(
                                   color: Colors.white,
-                                  width: containerWidth * (3 / 12),
+                                  width: containerWidth * (3 / 24),
                                 ),
                                 Container(
                                   color: Colors.blue,
-                                  width: containerWidth * (3 / 12),
+                                  width: containerWidth * (3 / 24),
                                 ),
                               ],
                             ),

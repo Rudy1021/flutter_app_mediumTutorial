@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_testpage/pages/wlstatus/wlstatus.dart';
-import 'package:flutter_app_testpage/pages/overview/overviewmain.dart';
 
 import '../effectiveness/effectiveness.dart';
+import '../operation/operation.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -51,7 +51,7 @@ class _HomePageState extends State<HomePage> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const Overviewmain()));
+                            builder: (context) => const OperationPage()));
                   },
                   child: const Text("稼動總覽"),
                 ),

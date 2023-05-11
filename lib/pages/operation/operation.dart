@@ -1,18 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_testpage/pages/overview/allday/allday.dart';
-import 'package:flutter_app_testpage/pages/overview/ruler/ruler.dart';
 
 import 'package:dropdown_button2/dropdown_button2.dart';
 
-class Overviewmain extends StatefulWidget {
-  const Overviewmain({Key? key}) : super(key: key);
+import 'allday/allday.dart';
+import 'ruler/ruler.dart';
+
+class OperationPage extends StatefulWidget {
+  const OperationPage({Key? key}) : super(key: key);
 
   @override
-  State<Overviewmain> createState() => _OverviewmainState();
+  State<OperationPage> createState() => _OperationPageState();
 }
 
-class _OverviewmainState extends State<Overviewmain> {
-  List<String> tabTitle = ["稼動尺", "全天趨勢"];
+class _OperationPageState extends State<OperationPage> {
+  List<Tab> tabTitle = [
+    const Tab(
+      child: Text(
+        '稼動尺',
+        style: TextStyle(fontSize: 20),
+      ),
+    ),
+    const Tab(
+      child: Text(
+        '全天趨勢',
+        style: TextStyle(fontSize: 20),
+      ),
+    )
+  ];
   List<String> category = ["全部", "L02", "L03", "L04"];
   String selectedCategory = "全部";
 
@@ -119,23 +133,10 @@ class _OverviewmainState extends State<Overviewmain> {
                   ],
                 ),
               ),
-              const TabBar(
+              TabBar(
                 labelColor: Colors.blue,
                 unselectedLabelColor: Colors.black,
-                tabs: [
-                  Tab(
-                    child: Text(
-                      '稼動尺',
-                      style: TextStyle(fontSize: 20),
-                    ),
-                  ),
-                  Tab(
-                    child: Text(
-                      '全天趨勢',
-                      style: TextStyle(fontSize: 20),
-                    ),
-                  )
-                ],
+                tabs: tabTitle,
               ),
               Expanded(
                 child: Container(
@@ -146,7 +147,7 @@ class _OverviewmainState extends State<Overviewmain> {
                   child: const TabBarView(
                     children: [
                       RulerPage(),
-                      OverviewAlldayPage(),
+                      OperationAlldayPage(),
                     ],
                   ),
                 ),

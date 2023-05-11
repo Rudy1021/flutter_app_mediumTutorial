@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:badges/badges.dart' as badges;
-import 'package:flutter_app_testpage/pages/days/wondetail.dart';
+
+import 'wondetail/wondetail.dart';
 
 class TodayWoNPage extends StatefulWidget {
   const TodayWoNPage({Key? key}) : super(key: key);

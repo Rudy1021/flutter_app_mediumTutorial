@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 
-import '../charts/wlchartspage.dart';
-import '../days/todaywon.dart';
+import 'todaywon/todaywon.dart';
+import 'wlcharts/wlcharts.dart';
 
 class WlStatusPage extends StatefulWidget {
   const WlStatusPage({super.key});
@@ -13,6 +13,20 @@ class WlStatusPage extends StatefulWidget {
 
 class _WlStatusPageState extends State<WlStatusPage>
     with SingleTickerProviderStateMixin {
+  List<Tab> tabtitle = [
+    const Tab(
+      child: Text(
+        '當天工單',
+        style: TextStyle(fontSize: 20),
+      ),
+    ),
+    const Tab(
+      child: Text(
+        '統計圖表',
+        style: TextStyle(fontSize: 20),
+      ),
+    ),
+  ];
   List<String> line = ["L01", "L02", "L03", "L04"];
   String selectedValue = "L01";
   num test = 3.9;
@@ -55,7 +69,7 @@ class _WlStatusPageState extends State<WlStatusPage>
                                 alignment: Alignment.center,
                                 child: Text(
                                   e,
-                                  style: TextStyle(color: Colors.white),
+                                  style: const TextStyle(color: Colors.white),
                                 ),
                               ))
                           .toList();
@@ -90,20 +104,7 @@ class _WlStatusPageState extends State<WlStatusPage>
               controller: _tabBarController,
               labelColor: Colors.blue,
               unselectedLabelColor: Colors.black,
-              tabs: const [
-                Tab(
-                  child: Text(
-                    '當天工單',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                ),
-                Tab(
-                  child: Text(
-                    '統計圖表',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                )
-              ],
+              tabs: tabtitle,
             ),
             Expanded(
               child: Container(

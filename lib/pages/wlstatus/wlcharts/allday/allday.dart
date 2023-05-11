@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:fl_chart/fl_chart.dart';
 
-import 'package:badges/badges.dart' as badges;
+import '../../../../components/wlstatus/badgetext.dart';
+import '../../../../components/wlstatus/flfunc.dart';
 
 class WlAllDayPage extends StatefulWidget {
   const WlAllDayPage({Key? key}) : super(key: key);
@@ -12,72 +13,6 @@ class WlAllDayPage extends StatefulWidget {
 }
 
 class _WlAllDayPageState extends State<WlAllDayPage> {
-  Widget bottomTitleWidgets(double value, TitleMeta meta) {
-    const style = TextStyle(
-      fontSize: 10,
-      fontWeight: FontWeight.bold,
-    );
-    String text;
-    switch (value.toInt()) {
-      case 0:
-        text = 'Jan';
-        break;
-      case 1:
-        text = 'Feb';
-        break;
-      case 2:
-        text = 'Mar';
-        break;
-      case 3:
-        text = 'Apr';
-        break;
-      case 4:
-        text = 'May';
-        break;
-      case 5:
-        text = 'Jun';
-        break;
-      case 6:
-        text = 'Jul';
-        break;
-      case 7:
-        text = 'Aug';
-        break;
-      case 8:
-        text = 'Sep';
-        break;
-      case 9:
-        text = 'Oct';
-        break;
-      case 10:
-        text = 'Nov';
-        break;
-      case 11:
-        text = 'Dec';
-        break;
-      default:
-        return Container();
-    }
-
-    return SideTitleWidget(
-      axisSide: meta.axisSide,
-      space: 4,
-      child: Text(text, style: style),
-    );
-  }
-
-  Widget leftTitleWidgets(double value, TitleMeta meta) {
-    const style = TextStyle(fontSize: 10);
-
-    return SideTitleWidget(
-      axisSide: meta.axisSide,
-      child: Text(
-        '\$ ${value + 0.5}',
-        style: style,
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -120,7 +55,7 @@ class _WlAllDayPageState extends State<WlAllDayPage> {
                 ),
               ],
             ),
-            height: 350,
+            height: 250,
             child: LineChart(
               LineChartData(
                 gridData: FlGridData(
@@ -268,8 +203,8 @@ class _WlAllDayPageState extends State<WlAllDayPage> {
             ],
           ),
           Container(
-            margin: const EdgeInsets.symmetric(vertical: 15),
-            padding: const EdgeInsets.only(top: 10, bottom: 10, right: 10),
+            margin: const EdgeInsets.only(top: 15),
+            padding: const EdgeInsets.only(top: 10, right: 10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
               color: Colors.white,
@@ -281,7 +216,7 @@ class _WlAllDayPageState extends State<WlAllDayPage> {
                 ),
               ],
             ),
-            height: 350,
+            height: 250,
             child: LineChart(
               LineChartData(
                 gridData: FlGridData(
@@ -373,37 +308,6 @@ class _WlAllDayPageState extends State<WlAllDayPage> {
           ),
         ],
       ),
-    );
-  }
-}
-
-class BadgeText extends StatelessWidget {
-  final String innerText;
-  final int badgeColor;
-  const BadgeText({
-    super.key,
-    required this.innerText,
-    required this.badgeColor,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        badges.Badge(
-          badgeAnimation: const badges.BadgeAnimation.fade(toAnimate: false),
-          badgeContent: const SizedBox(
-            width: 3,
-            height: 3,
-          ),
-          badgeStyle:
-              badges.BadgeStyle(elevation: 0, badgeColor: Color(badgeColor)),
-        ),
-        Text(
-          innerText,
-          style: const TextStyle(fontSize: 16),
-        ),
-      ],
     );
   }
 }

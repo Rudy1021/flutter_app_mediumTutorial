@@ -3,7 +3,8 @@ import 'package:badges/badges.dart' as badges;
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:fl_chart/fl_chart.dart';
-import '../../data/price_point.dart';
+
+import 'price_point.dart';
 
 class WoNDetailPage extends StatefulWidget {
   const WoNDetailPage({
@@ -35,66 +36,62 @@ class _WoNDetailPageState extends State<WoNDetailPage> {
               const SizedBox(
                 height: 5,
               ),
-              AspectRatio(
-                aspectRatio: 1.3,
-                child: Card(
-                  clipBehavior: Clip.antiAlias,
-                  shape: const ContinuousRectangleBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(20),
-                    ),
+              Card(
+                clipBehavior: Clip.antiAlias,
+                shape: const ContinuousRectangleBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(20),
                   ),
-                  elevation: 3,
-                  child: Container(
-                    margin: const EdgeInsets.all(20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Stack(
-                          children: [
-                            Container(
-                              alignment: Alignment.centerRight,
-                              child: const badges.Badge(
-                                badgeAnimation: badges.BadgeAnimation.fade(
-                                    toAnimate: false),
-                                badgeContent: SizedBox(
-                                  width: 10,
-                                  height: 10,
-                                ),
-                                badgeStyle: badges.BadgeStyle(
-                                    elevation: 0,
-                                    badgeColor: Color(0xfffecb00)),
+                ),
+                elevation: 3,
+                child: Container(
+                  margin: const EdgeInsets.all(20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Stack(
+                        children: [
+                          Container(
+                            alignment: Alignment.centerRight,
+                            child: const badges.Badge(
+                              badgeAnimation:
+                                  badges.BadgeAnimation.fade(toAnimate: false),
+                              badgeContent: SizedBox(
+                                width: 10,
+                                height: 10,
                               ),
+                              badgeStyle: badges.BadgeStyle(
+                                  elevation: 0, badgeColor: Color(0xfffecb00)),
                             ),
-                            const CardText(
-                              labelText: "工      單:SP202301031",
-                            ),
-                          ],
-                        ),
-                        const CardText(
-                          labelText: "料      號:PAK.2210091.002G",
-                        ),
-                        const CardText(
-                          labelText: "品      名: Dell CY23 Dakar Fix_咬花板 VESA後蓋",
-                        ),
-                        const CardText(
-                          labelText: "機種名稱:全力發-CLF-100T",
-                        ),
-                        const CardText(
-                          labelText: "在線人數:31",
-                        ),
-                        const CardText(
-                          labelText: "實計工時:236.8h",
-                        ),
-                        const CardText(
-                          labelText: "更新時間:2023-01-05 14:32:22",
-                        ),
-                        const CardText(
-                          labelText: "歷       程:報停工",
-                          labelColor: Colors.blue,
-                        ),
-                      ],
-                    ),
+                          ),
+                          const CardText(
+                            labelText: "工      單:SP202301031",
+                          ),
+                        ],
+                      ),
+                      const CardText(
+                        labelText: "料      號:PAK.2210091.002G",
+                      ),
+                      const CardText(
+                        labelText: "品      名: Dell CY23 Dakar Fix_咬花板 VESA後蓋",
+                      ),
+                      const CardText(
+                        labelText: "機種名稱:全力發-CLF-100T",
+                      ),
+                      const CardText(
+                        labelText: "在線人數:31",
+                      ),
+                      const CardText(
+                        labelText: "實計工時:236.8h",
+                      ),
+                      const CardText(
+                        labelText: "更新時間:2023-01-05 14:32:22",
+                      ),
+                      const CardText(
+                        labelText: "歷       程:報停工",
+                        labelColor: Colors.blue,
+                      ),
+                    ],
                   ),
                 ),
               ),
